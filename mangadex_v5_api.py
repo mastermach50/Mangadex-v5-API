@@ -42,9 +42,10 @@ def getmdhomeurl(chid):
     return dict
 
 def ch_constructor(manga, chapter):
+    chapter = str(chapter)
     mangalist = listmanga(manga)
-    print(mangalist["1"][0])
-    mangaid = mangalist["1"][1]
+    print(mangalist["0"][0])
+    mangaid = mangalist["0"][1]
     print(mangaid)
     ch_dict = get_ch(mangaid, chapter)
     chid = ch_dict["chid"]
