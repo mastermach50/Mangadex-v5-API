@@ -51,7 +51,11 @@ class Mangadex:
         self.searchresults["baseurl"] = response.json()["baseUrl"]
         self.chapterbaseurl = self.searchresults["baseurl"]
 
-    def ch_constructor(self):
+    def ch_constructor(self, chapter):
+        if chapter != None:
+            self.chapter = chapter
+        else:
+            pass
         self.listmanga()
         print(self.manga)
         print(self.mangaid)
