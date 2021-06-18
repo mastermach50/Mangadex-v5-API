@@ -7,9 +7,10 @@ An unofficial Mangadex v5 API wrapper for python. (without async)
 
 ## Usage
 ```python
-ch_constructor("<manga name>", <chapter number>)
+instance = Mangadex(<manga title as str>)
+instance.ch_constructor(<chapter number as int>)
 ```
-A dictionary containing the page no and the url of the page will be returned.
+A dictionary called `instance.searchresults` containing the page no and the url of the page will be made.
 ```
 {
 'page 1': 'url',
