@@ -1,3 +1,5 @@
+> propably dead code
+
 # Mangadex-v5-API wrapper for Python
 An unofficial Mangadex v5 API wrapper for python. (without async)
 
