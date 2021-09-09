@@ -1,0 +1,77 @@
+{
+    "results": [
+      {
+        "result": "ok",
+        "data": {
+          "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+          "type": "manga",
+          "attributes": {
+            "title": {
+              "en": "This is a localized string",
+              "fr": "C'est une chaine traduite"
+            },
+            "altTitles": [
+              {
+                "en": "This is a localized string",
+                "fr": "C'est une chaine traduite"
+              }
+            ],
+            "description": {
+              "en": "This is a localized string",
+              "fr": "C'est une chaine traduite"
+            },
+            "isLocked": true,
+            "links": {
+              "property1": "string",
+              "property2": "string"
+            },
+            "originalLanguage": "string",
+            "lastVolume": "string",
+            "lastChapter": "string",
+            "publicationDemographic": "shounen",
+            "status": "string",
+            "year": 0,
+            "contentRating": "safe",
+            "tags": [
+              {
+                "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                "type": "tag",
+                "attributes": {
+                  "name": {
+                    "en": "This is a localized string",
+                    "fr": "C'est une chaine traduite"
+                  },
+                  "description": {
+                    "en": "This is a localized string",
+                    "fr": "C'est une chaine traduite"
+                  },
+                  "group": "string",
+                  "version": 1
+                },
+                "relationships": [
+                  {
+                    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                    "type": "string",
+                    "attributes": {}
+                  }
+                ]
+              }
+            ],
+            "version": 1,
+            "createdAt": "string",
+            "updatedAt": "string"
+          },
+          "relationships": [
+            {
+              "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+              "type": "string",
+              "attributes": {}
+            }
+          ]
+        }
+      }
+    ],
+    "limit": 0,
+    "offset": 0,
+    "total": 0
+  }
