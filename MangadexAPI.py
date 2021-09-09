@@ -70,7 +70,9 @@ def search(name, rating = "default", limit = 10):
 
 #get details of a manga using its id
 def view_manga(mangaid):
-    """View details about manga using their id"""
+    """View details about manga using its id.
+    
+    Get all data about a maga using its id."""
 
     #make query to server to get a dict of manga
     response = requests.get(apiurl + "manga/" + mangaid)
@@ -94,6 +96,7 @@ def view_manga(mangaid):
 
 #get list of all tags
 def tags():
+    """Get a list of all tags used by Mangadex and its id."""
 
     #make query to server to get list of all tags with their id
     response = requests.get(apiurl + "manga/tag")
@@ -104,6 +107,8 @@ def tags():
 
 #get list of cover arts
 def cover_art_list(mangaid):
+    """Get a list of all cover arts for a manga using its
+    id(manga's id) and some details about the cover arts"""
 
     #make query to server to get dict of cover arts
     parameters = {
@@ -128,7 +133,14 @@ def cover_art_list(mangaid):
 
 #construct cover urls
 def get_cover_urls(mangaid, size = "original"):
-    """"""
+    """Get cover art urls for all cover arts of a manga.
+    This function uses the `cover_art_list` function and returns
+    the full constructed urls but not any data about the cover art.
+    
+    Cover art sizes are `original` for full quality and `512`
+    for 512px quality and `256` for 256px quality.
+    512 and 256 are best for thumbnails."""
+
     #get cover art list for manga
     coverdata = cover_art_list(mangaid)
 
