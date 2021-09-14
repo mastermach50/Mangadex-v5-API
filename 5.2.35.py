@@ -49,20 +49,22 @@ def search(name, rating = "default", limit = 10):
     response = requests.get(url = apiurl + "manga", params = parameters)
     _json = response.json()
 
+    pc(_json)
+
     results = []
 
     #extract data from server response
-    for item in _json["results"]:
+    for item in _json["data"]:
         results.append({
-            "title": item["data"]["attributes"]["title"]["en"],
-            "mangaid": item["data"]["id"],
-            "desc": item["data"]["attributes"]["description"]["en"],
-            "originalLanguage": item["data"]["attributes"]["originalLanguage"],
-            "lastVolume": item["data"]["attributes"]["lastVolume"],
-            "lastChapter": item["data"]["attributes"]["lastChapter"],
-            "publicationDemographic": item["data"]["attributes"]["publicationDemographic"],
-            "status": item["data"]["attributes"]["status"],
-            "contentRating": item["data"]["attributes"]["contentRating"]
+            "title": item["attributes"]["title"]["en"],
+            "mangaid": item["id"],
+            "desc": item["attributes"]["description"]["en"],
+            "originalLanguage": item["attributes"]["originalLanguage"],
+            "lastVolume": item["attributes"]["lastVolume"],
+            "lastChapter": item["attributes"]["lastChapter"],
+            "publicationDemographic": item["attributes"]["publicationDemographic"],
+            "status": item["attributes"]["status"],
+            "contentRating": item["attributes"]["contentRating"]
             })
 
     return results
@@ -77,6 +79,8 @@ def view_manga(mangaid):
     #make query to server to get a dict of manga
     response = requests.get(apiurl + "manga/" + mangaid)
     _json = response.json()
+
+    pc(_json)
 
     #extract data from server response
     result = {
@@ -96,7 +100,7 @@ def view_manga(mangaid):
 
 #get list of all tags
 def tags():
-    """Get a list of all tags used by Mangadex and its id."""
+    """Get a list of all tags used by Mangadex and their id."""
 
     #make query to server to get list of all tags with their id
     response = requests.get(apiurl + "manga/tag")
@@ -108,7 +112,7 @@ def tags():
 #get list of cover arts
 def cover_art_list(mangaid):
     """Get a list of all cover arts for a manga using its
-    id(manga's id) and some details about the cover arts"""
+    id(manga's id) and some extra details about the cover art."""
 
     #make query to server to get dict of cover arts
     parameters = {
@@ -120,29 +124,33 @@ def cover_art_list(mangaid):
     #extract data from server response
     results = []
 
-    for item in _json["results"]:
+    pc(_json)
+
+    for item in _json["data"]:
         results.append({
-                "fileName": item["data"]["attributes"]["fileName"],
-                "version": item["data"]["attributes"]["version"],
-                "volume": item["data"]["attributes"]["volume"],
-                "coverid": item["data"]["id"]
+                "fileName": item["attributes"]["fileName"],
+                "version": item["attributes"]["version"],
+                "volume": item["attributes"]["volume"],
+                "coverid": item["id"]
             })
 
     return results
 
 
 #construct cover urls
-def get_cover_urls(mangaid, size = "original"):
+def get_cover_urls(mangaid, size = None):
     """Get cover art urls for all cover arts of a manga.
     This function uses the `cover_art_list` function and returns
     the full constructed urls but not any data about the cover art.
     
-    Cover art sizes are `original` for full quality and `512`
-    for 512px quality and `256` for 256px quality.
+    Leave size argument empty for full quality or `512`
+    for 512px quality or `256` for 256px quality.
     512 and 256 are best for thumbnails."""
 
     #get cover art list for manga
     coverdata = cover_art_list(mangaid)
+
+    pc(coverdata)
 
     #construct urls
     results = []
